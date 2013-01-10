@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:gravity="top"
+    android:id="@+id/tasksLayout"
+    android:orientation="vertical" >
+    
+    <Button
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/header_fon" />     
+ 			
+    <Button
+        android:id="@+id/arrowButton"
+        android:layout_width="25dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"        
+        android:background="@drawable/arrow"/>
+
+	<TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:gravity="center"
+	    android:layout_marginTop="4dp"    
+	    android:text="Уровень 1"
+	    android:textSize="20dp" />  
+	    
+	<TextView
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"   
+	    android:gravity="center"
+	    android:textSize="10dp"    	 
+	    android:layout_marginTop="12dp"
+	    android:layout_marginRight="25dp"        
+	    android:text="Подсказки:" /> 
+	    
+	<TextView
+	    android:id="@+id/textView2"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+		android:layout_alignParentRight="true" 
+	    android:layout_marginTop="9dp"
+	    android:layout_marginRight="15dp"         
+	    android:text="12"
+	    android:textSize="14dp" />    
+	    
+	<ListView
+		android:id="@+id/mylist"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="32dp"
+		android:cacheColorHint="#00000000"
+		android:divider="@drawable/divider">
+	</ListView>
+
+</RelativeLayout>

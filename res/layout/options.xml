@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/optionsLayout"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:background="@drawable/fon">
+    
+    <Button
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/header_fon" /> 
+        
+	<TextView
+	    android:id="@+id/textView1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_centerHorizontal="true"
+	    android:gravity="center"
+	    android:layout_marginTop="4dp"    
+	    android:text="Настройки"
+	    android:textSize="20dp" />      
+	    
+    <Button
+        android:id="@+id/arrowButton"
+        android:layout_width="25dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"        
+        android:background="@drawable/arrow"/>
+
+    <Button android:id="@+id/sfxButton"
+        android:layout_height="38dp" 
+        android:layout_width="fill_parent" 
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"  
+        android:background="#8ad5f0"
+        android:text="выключить звуки"
+        android:textColor="#fff"
+        android:textSize="30dp"
+        android:gravity="center"/>
+
+    <Button android:id="@+id/musicButton"
+        android:layout_height="38dp" 
+        android:layout_width="fill_parent"  
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="170dp" 
+        android:background="#d3e992"
+        android:text="выключить музыку"
+        android:textColor="#fff"
+        android:textSize="30dp"
+        android:gravity="center"/>
+    
+    <Button android:id="@+id/resetButton"
+        android:layout_height="38dp" 
+        android:layout_width="fill_parent" 
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="220dp" 
+        android:background="#ffafaf"
+        android:text="сбросить прогресс"
+        android:textColor="#fff"
+        android:textSize="30dp"/>        
+</RelativeLayout>
