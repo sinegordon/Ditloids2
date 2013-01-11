@@ -6,13 +6,14 @@
 
     <TextView
         android:id="@+id/label"
-        android:layout_width="280dp"
+        android:layout_width="fill_parent"
         android:layout_height="54dp"
         android:text="@+id/label"
-        android:textSize="18dp"
+        android:textColor="#fff"
+        android:textSize="18sp"
         android:layout_marginTop="15dp"        
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:background="@drawable/bg_task" />
+        android:background="#8ad5f0" />
     
 </RelativeLayout>

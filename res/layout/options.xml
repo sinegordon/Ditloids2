@@ -11,7 +11,7 @@
         android:id="@+id/imageView1"
         android:layout_width="fill_parent"
         android:layout_height="44dp"
-        android:background="@drawable/header_fon" /> 
+        android:background="#727272" /> 
         
 	<TextView
 	    android:id="@+id/textView1"
@@ -19,16 +19,17 @@
 	    android:layout_height="wrap_content"
 	    android:layout_centerHorizontal="true"
 	    android:gravity="center"
-	    android:layout_marginTop="4dp"    
-	    android:text="Настройки"
-	    android:textSize="20dp" />      
+	    android:layout_marginTop="8dp"
+	    android:textColor="#fff"
+	    android:text="@string/settings"
+	    android:textSize="20sp" />      
 	    
     <Button
         android:id="@+id/arrowButton"
         android:layout_width="25dp"
-        android:layout_height="17dp"
+        android:layout_height="25dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"        
+        android:layout_marginLeft="13dp"        
         android:background="@drawable/arrow"/>
 
     <Button android:id="@+id/sfxButton"
@@ -39,7 +40,7 @@
         android:background="#8ad5f0"
         android:text="выключить звуки"
         android:textColor="#fff"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:gravity="center"/>
 
     <Button android:id="@+id/musicButton"
@@ -50,7 +51,7 @@
         android:background="#d3e992"
         android:text="выключить музыку"
         android:textColor="#fff"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:gravity="center"/>
     
     <Button android:id="@+id/resetButton"
@@ -61,5 +62,5 @@
         android:background="#ffafaf"
         android:text="сбросить прогресс"
         android:textColor="#fff"
-        android:textSize="30dp"/>        
+        android:textSize="30sp"/>        
 </RelativeLayout>

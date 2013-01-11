@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Дитлоид</string>
+    <string name="logo">logo</string>
     <string name="prefs_name">DitloidsSettings</string>
     <string name="arrow">Назад</string>
-    <string name="start">Играть</string>
-    <string name="settings">Настройки</string>
-    <string name="rules">Как играть?</string> 
-    <string name="level2">Уровень 2</string>
+    <string name="start">играть</string>
+    <string name="settings">настройки</string>
+    <string name="rules">как играть?</string> 
+    <string name="level">Уровень 1</string>
+    <string name="levels">выбор уровня</string>
+    <string name="hints">подсказки:</string>
+    <string name="hints_count">12</string>
+    <string name="task_item">29 Д в Ф в В Г</string>
+    <string name="enter_answer">введите ответ...</string>
     <string name="countlv1">13</string>
     <string name="countlv2">7</string>
     <string name="countlv3">18</string>

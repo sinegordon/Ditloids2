@@ -9,6 +9,7 @@
 
     <ImageView
         android:id="@+id/imageView1"
+        android:contentDescription="@string/logo"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_marginBottom="0dp"
@@ -20,18 +21,18 @@
         android:layout_width="fill_parent"
         android:layout_marginTop="25dp" 	 
         android:background="#8ad5f0"
-        android:text="играть"
+        android:text="@string/start"
         android:textColor="#fff"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:gravity="center" />
 
     <Button android:id="@+id/SettingsButton"
         android:layout_height="45dp" 
         android:layout_width="fill_parent" 	
         android:background="#d3e992"
-        android:text="настройки"
+        android:text="@string/settings"
         android:textColor="#fff"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:gravity="center" />
     
     <Button android:id="@+id/RulesButton"
@@ -39,8 +40,8 @@
         android:layout_width="fill_parent" 
         android:layout_marginBottom="55dp"		
         android:background="#ffafaf"
-        android:text="как играть?"
+        android:text="@string/rules"
         android:textColor="#fff"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:gravity="center"  />        
 </LinearLayout>
