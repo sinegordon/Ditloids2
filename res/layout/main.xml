@@ -9,6 +9,7 @@
 
     <ImageView
         android:id="@+id/imageView1"
+        android:contentDescription="@string/logo"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_marginBottom="0dp"
@@ -16,31 +17,19 @@
         android:src="@drawable/ditloid" />
     
     <Button android:id="@+id/StartButton"
-        android:layout_height="45dp" 
-        android:layout_width="fill_parent"
+        style="@style/buttons"
         android:layout_marginTop="25dp" 	 
         android:background="#8ad5f0"
-        android:text="играть"
-        android:textColor="#fff"
-        android:textSize="30dp"
-        android:gravity="center" />
+        android:text="@string/start" />
 
     <Button android:id="@+id/SettingsButton"
-        android:layout_height="45dp" 
-        android:layout_width="fill_parent" 	
+        style="@style/buttons"        
         android:background="#d3e992"
-        android:text="настройки"
-        android:textColor="#fff"
-        android:textSize="30dp"
-        android:gravity="center" />
+        android:text="@string/settings" />
     
     <Button android:id="@+id/RulesButton"
-        android:layout_height="45dp" 
-        android:layout_width="fill_parent" 
+        style="@style/buttons"        
         android:layout_marginBottom="55dp"		
         android:background="#ffafaf"
-        android:text="как играть?"
-        android:textColor="#fff"
-        android:textSize="30dp"
-        android:gravity="center"  />        
+        android:text="@string/rules" />        
 </LinearLayout>
