@@ -17,31 +17,19 @@
         android:src="@drawable/ditloid" />
     
     <Button android:id="@+id/StartButton"
-        android:layout_height="45dp" 
-        android:layout_width="fill_parent"
+        style="@style/buttons"
         android:layout_marginTop="25dp" 	 
         android:background="#8ad5f0"
-        android:text="@string/start"
-        android:textColor="#fff"
-        android:textSize="30sp"
-        android:gravity="center" />
+        android:text="@string/start" />
 
     <Button android:id="@+id/SettingsButton"
-        android:layout_height="45dp" 
-        android:layout_width="fill_parent" 	
+        style="@style/buttons"        
         android:background="#d3e992"
-        android:text="@string/settings"
-        android:textColor="#fff"
-        android:textSize="30sp"
-        android:gravity="center" />
+        android:text="@string/settings" />
     
     <Button android:id="@+id/RulesButton"
-        android:layout_height="45dp" 
-        android:layout_width="fill_parent" 
+        style="@style/buttons"        
         android:layout_marginBottom="55dp"		
         android:background="#ffafaf"
-        android:text="@string/rules"
-        android:textColor="#fff"
-        android:textSize="30sp"
-        android:gravity="center"  />        
+        android:text="@string/rules" />        
 </LinearLayout>

@@ -9,28 +9,16 @@
     
     <Button
         android:id="@+id/imageView1"
-        android:layout_width="fill_parent"
-        android:layout_height="44dp"
-        android:background="#727272" />     
+        style="@style/header" />     
  			
     <Button
         android:id="@+id/arrowButton"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="13dp"        
-        android:background="@drawable/arrow"/>
+        style="@style/arrow" />
 
 	<TextView
 	    android:id="@+id/textView1"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_centerHorizontal="true"
-	    android:gravity="center"
-	    android:layout_marginTop="8dp"
-	    android:textColor="#fff"    
-	    android:text="@string/level"
-	    android:textSize="20sp" />  
+        style="@style/headerText"	       
+	    android:text="@string/level" />  
 	    
 	<TextView
 	    android:layout_width="wrap_content"

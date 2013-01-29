@@ -9,58 +9,35 @@
     
     <Button
         android:id="@+id/imageView1"
-        android:layout_width="fill_parent"
-        android:layout_height="44dp"
-        android:background="#727272" /> 
+        style="@style/header" /> 
         
 	<TextView
 	    android:id="@+id/textView1"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_centerHorizontal="true"
-	    android:gravity="center"
-	    android:layout_marginTop="8dp"
-	    android:textColor="#fff"
-	    android:text="@string/settings"
-	    android:textSize="20sp" />      
+        style="@style/headerText"	    
+	    android:text="@string/settings" />      
 	    
     <Button
         android:id="@+id/arrowButton"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="13dp"        
-        android:background="@drawable/arrow"/>
+        style="@style/arrow" />
 
     <Button android:id="@+id/sfxButton"
-        android:layout_height="38dp" 
-        android:layout_width="fill_parent" 
+        style="@style/buttons"        
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"  
         android:background="#8ad5f0"
-        android:text="выключить звуки"
-        android:textColor="#fff"
-        android:textSize="30sp"
-        android:gravity="center"/>
+        android:text="выключить звуки"/>
 
     <Button android:id="@+id/musicButton"
-        android:layout_height="38dp" 
-        android:layout_width="fill_parent"  
+        style="@style/buttons"         
         android:layout_centerHorizontal="true"
         android:layout_marginTop="170dp" 
         android:background="#d3e992"
-        android:text="выключить музыку"
-        android:textColor="#fff"
-        android:textSize="30sp"
-        android:gravity="center"/>
+        android:text="выключить музыку"/>
     
     <Button android:id="@+id/resetButton"
-        android:layout_height="38dp" 
-        android:layout_width="fill_parent" 
+        style="@style/buttons"        
         android:layout_centerHorizontal="true"
         android:layout_marginTop="220dp" 
         android:background="#ffafaf"
-        android:text="сбросить прогресс"
-        android:textColor="#fff"
-        android:textSize="30sp"/>        
+        android:text="сбросить прогресс"/>        
 </RelativeLayout>
