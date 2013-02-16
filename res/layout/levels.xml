@@ -108,7 +108,70 @@
 			android:textColor="#d3dae0"
     	    android:layout_marginTop="165dp"
     	    android:layout_marginLeft="75dp"/>   		
-        </RelativeLayout>        
+        </RelativeLayout>     
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+   			android:gravity="center">
+   		<Button     		    
+     	  	android:id="@+id/level5button"			
+            android:layout_width="230dp"
+            android:layout_height="230dp"
+    	    android:layout_marginTop="0dp"/>
+   			<TextView		    
+			android:id="@+id/TextView5"
+   			android:gravity="center"
+			android:text="@string/countlv4"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:textSize="22sp"
+			android:textColor="#d3dae0"
+    	    android:layout_marginTop="165dp"
+    	    android:layout_marginLeft="75dp"/>   		
+        </RelativeLayout> 
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+   			android:gravity="center">
+   		<Button     		    
+     	  	android:id="@+id/level6button"			
+            android:layout_width="230dp"
+            android:layout_height="230dp"
+    	    android:layout_marginTop="0dp"/>
+   			<TextView		    
+			android:id="@+id/TextView6"
+   			android:gravity="center"
+			android:text="@string/countlv4"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:textSize="22sp"
+			android:textColor="#d3dae0"
+    	    android:layout_marginTop="165dp"
+    	    android:layout_marginLeft="75dp"/>   		
+        </RelativeLayout> 
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+   			android:gravity="center">
+   		<Button     		    
+     	  	android:id="@+id/level7button"			
+            android:layout_width="230dp"
+            android:layout_height="230dp"
+    	    android:layout_marginTop="0dp"/>
+   			<TextView		    
+			android:id="@+id/TextView7"
+   			android:gravity="center"
+			android:text="@string/countlv4"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:textSize="22sp"
+			android:textColor="#d3dae0"
+    	    android:layout_marginTop="165dp"
+    	    android:layout_marginLeft="75dp"/>   		
+        </RelativeLayout>         
         
     </com.ditloids2.HorizontalPager>
     
