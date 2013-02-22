@@ -53,7 +53,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
         if(game == null)
 	       	try {
-				game = new Game(getApplicationContext(), 4);
+				game = new Game(getApplicationContext(), 7);
 			} catch (Exception e) {
 				e.printStackTrace();
 			};

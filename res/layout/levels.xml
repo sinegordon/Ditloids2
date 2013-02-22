@@ -178,7 +178,7 @@
     <RadioGroup
         android:id="@+id/tabs"
         android:layout_height="wrap_content"
-        android:layout_width="160dp"       
+        android:layout_width="262dp"       
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"          
@@ -199,7 +199,19 @@
         <RadioButton           
             android:id="@+id/radio_btn_3"
 			android:width="2dp"
-			android:height="2dp" />        
+			android:height="2dp" />
+        <RadioButton           
+            android:id="@+id/radio_btn_4"
+			android:width="2dp"
+			android:height="2dp" />  
+        <RadioButton           
+            android:id="@+id/radio_btn_5"
+			android:width="2dp"
+			android:height="2dp" />  
+        <RadioButton           
+            android:id="@+id/radio_btn_6"
+			android:width="2dp"
+			android:height="2dp" />   
     </RadioGroup>      
     
 </RelativeLayout>
