@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.os.Bundle;
@@ -39,6 +40,8 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
     	v.setBackgroundDrawable(bmd);
 		ListView listView = (ListView) findViewById(R.id.mylist);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        // Выставляем шрифт на header
+        ((TextView)findViewById(R.id.textView1)).setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf"));
 		// Устанавливаем обработчики событий
 		findViewById(R.id.arrowButton).setOnClickListener(this);
 		listView.setOnItemClickListener(this);

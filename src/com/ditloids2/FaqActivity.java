@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.os.Bundle;
@@ -34,6 +35,8 @@ public class FaqActivity extends Activity implements OnClickListener, OnKeyListe
     	v.setBackgroundDrawable(bmd);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		findViewById(R.id.arrowButton).setOnClickListener(this);
+        // Выставляем шрифт на header
+        ((TextView)findViewById(R.id.textView1)).setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf"));
 	}
 	
 	@Override

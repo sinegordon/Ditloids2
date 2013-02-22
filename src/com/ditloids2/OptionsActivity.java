@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class OptionsActivity extends Activity implements OnClickListener, OnKeyListener {
 	// Секция диалога
@@ -76,15 +78,26 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
     	Button sfxButton = (Button)findViewById(R.id.sfxButton);
     	Button musicButton = (Button)findViewById(R.id.musicButton);
         if(game.GetMuteSound()){
-    		sfxButton.setBackgroundResource(R.drawable.sfx_on);
+        	sfxButton.setText(R.string.sfx_on);
+    		//sfxButton.setBackgroundResource(R.drawable.sfx_on);
     	}else{
-    		sfxButton.setBackgroundResource(R.drawable.sfx_off);	    		
+    		sfxButton.setText(R.string.sfx_off);
+    		//sfxButton.setBackgroundResource(R.drawable.sfx_off);	    		
     	}
     	if(game.GetMuteMusic()){
-    		musicButton.setBackgroundResource(R.drawable.music_on);
+    		musicButton.setText(R.string.music_on);
+    		//musicButton.setBackgroundResource(R.drawable.music_on);
     	}else{
-    		musicButton.setBackgroundResource(R.drawable.music_off);	    		
+    		musicButton.setText(R.string.music_off);
+    		//musicButton.setBackgroundResource(R.drawable.music_off);	    		
     	}
+    	
+        // Выставляем шрифт на header
+        ((TextView)findViewById(R.id.textView1)).setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf"));
+        // Ставим шрифт на кнопки меню
+        ((Button)findViewById(R.id.sfxButton)).setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Light.ttf"));
+        ((Button)findViewById(R.id.resetButton)).setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Light.ttf"));
+        ((Button)findViewById(R.id.musicButton)).setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Light.ttf"));
 		// Устанавливаем обработчики событий
 		findViewById(R.id.arrowButton).setOnClickListener(this);
 		findViewById(R.id.sfxButton).setOnClickListener(this);
@@ -106,21 +119,25 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	    	if(game.GetMuteSound()){
 	    		game.SetMuteSound(false);
 	    		game.SaveMuteSound();
-	    		sfxButton.setBackgroundResource(R.drawable.sfx_off);
+	    		sfxButton.setText(R.string.sfx_off);
+	    		//sfxButton.setBackgroundResource(R.drawable.sfx_off);
 	    	}else{
 	    		game.SetMuteSound(true);
 	    		game.SaveMuteMusic();
-	    		sfxButton.setBackgroundResource(R.drawable.sfx_on);	    		
+	    		sfxButton.setText(R.string.sfx_on);
+	    		//sfxButton.setBackgroundResource(R.drawable.sfx_on);	    		
 	    	}
 	    	break;
 	    case R.id.musicButton:
 	    	musicButton = (Button)findViewById(R.id.musicButton);
 	    	if(game.GetMuteMusic()){
+	    		musicButton.setText(R.string.music_off);
 	    		game.SetMuteMusic(false);
-	    		musicButton.setBackgroundResource(R.drawable.music_off);
+	    		//musicButton.setBackgroundResource(R.drawable.music_off);
 	    	}else{
+	    		musicButton.setText(R.string.music_on);
 	    		game.SetMuteMusic(true);
-	    		musicButton.setBackgroundResource(R.drawable.music_on);	    		
+	    		//musicButton.setBackgroundResource(R.drawable.music_on);	    		
 	    	}
 	    	break;
 	    case R.id.resetButton:

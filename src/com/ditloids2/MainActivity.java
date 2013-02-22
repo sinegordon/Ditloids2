@@ -10,6 +10,7 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.media.audiofx.AudioEffect.OnControlStatusChangeListener;
@@ -21,6 +22,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.app.ActivityManager;
 
 public class MainActivity extends Activity implements OnClickListener {
@@ -43,6 +46,11 @@ public class MainActivity extends Activity implements OnClickListener {
         findViewById(R.id.StartButton).setOnClickListener(this);
         findViewById(R.id.RulesButton).setOnClickListener(this);
         findViewById(R.id.SettingsButton).setOnClickListener(this);
+        // Ставим шрифт на кнопки меню
+        ((Button)findViewById(R.id.StartButton)).setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Light.ttf"));
+        ((Button)findViewById(R.id.RulesButton)).setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Light.ttf"));
+        ((Button)findViewById(R.id.SettingsButton)).setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Light.ttf"));
+
         if(game == null)
 	       	try {
 				game = new Game(getApplicationContext(), 4);
@@ -59,6 +67,8 @@ public class MainActivity extends Activity implements OnClickListener {
     	OptionsActivity.SetDrawable(bmd);
     	TaskActivity.SetDrawable(bmd);
     	FaqActivity.SetDrawable(bmd);
+        // Выставляем шрифт на header
+        //((LinearLayout)findViewById(R.id.mainLayout)).getTop() .setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf"));
         int memoryClass = ((ActivityManager) getSystemService(Context.ACTIVITY_SERVICE)).getMemoryClass();
         Log.d("sinegordon", Integer.toString(memoryClass));
     }

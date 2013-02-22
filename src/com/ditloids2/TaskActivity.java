@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.os.Bundle;
@@ -92,7 +93,8 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		((TextView)findViewById(R.id.textView1)).setText("Уровень "+Integer.toString(currentLevel.GetLevelIndex()));
 		// Вставляем количество подсказок в надписи
 		((TextView)findViewById(R.id.textView2)).setText(Integer.toString(game.GetCountHints()));
-
+        // Выставляем шрифт на header
+        ((TextView)findViewById(R.id.textView1)).setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf"));
 		// Если дитлоид не отгадан
 		if(!game.GetAnswer(game.GetCurrentDitloidIndex())){
 			// Заполняем поле дитлоида

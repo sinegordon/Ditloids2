@@ -87,6 +87,8 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         radioGroup.setOnCheckedChangeListener(onCheckedChangedListener);
         pager = (HorizontalPager) findViewById(R.id.horizontal_pager);
         pager.setOnScreenSwitchListener(onScreenSwitchListener);
+        // Выставляем шрифт на header
+        ((TextView)findViewById(R.id.textView1)).setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf"));
         // Построение диалога
         adb = new AlertDialog.Builder(this);
         // Иконка диалога
@@ -155,12 +157,12 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         for(int i = 1; i < game.GetCountLevels() + 1; i++) {
         	countViews[i-1].setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Ukrainian-Play.ttf"));
         	if(!game.GetLevelAccess(i)) {
-        		countButtons[i-1].setBackgroundResource(R.drawable.level_lock);
+        		//countButtons[i-1].setBackgroundResource(R.drawable.level_lock);
             	countViews[i-1].setText("Уровень " + Integer.toString(i));
         	}
         	else {
         		int drawableId = getResources().getIdentifier("level" + Integer.toString(i), "drawable", getApplicationContext().getPackageName());
-        		countButtons[i-1].setBackgroundResource(drawableId);
+        		//countButtons[i-1].setBackgroundResource(drawableId);
             	countViews[i-1].setText(Integer.toString(game.AnswersCount(i)) + " из " + Integer.toString(game.GetLevel(i).GetDitloidsCount()));
         	}
         }

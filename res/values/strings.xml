@@ -42,4 +42,8 @@
         \n
         Приятной игры!
     </string>
+    <string name="sfx_on">включить звуки</string>
+    <string name="sfx_off">выключить звуки</string>
+    <string name="music_on">включить музыку</string>
+    <string name="music_off">выключить музыку</string>
 </resources>
