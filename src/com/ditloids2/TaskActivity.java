@@ -37,39 +37,12 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	      adb.setMessage(R.string.hint_message);
 	      // Иконка
 	      adb.setIcon(android.R.drawable.ic_dialog_info);
-	      // Кнопка положительного ответа
-	      adb.setPositiveButton(R.string.yes, dialogClickListener);
-	      // Кнопка нейтрального ответа
-	      adb.setNeutralButton(R.string.no, dialogClickListener);
 	      // Создаем диалог
 	      return adb.create();
 	   }
 	   return super.onCreateDialog(id);
 	}
 	
-	android.content.DialogInterface.OnClickListener dialogClickListener = new android.content.DialogInterface.OnClickListener(){
-		public void onClick(DialogInterface dialog, int which){
-			switch (which) {
-		    // положительная кнопка
-		    case Dialog.BUTTON_POSITIVE:
-		    	// Диалог
-		    	AlertDialog.Builder adb = null;		    	
-		        // Построение диалога
-		        adb = new AlertDialog.Builder(TaskActivity.this);
-		        // Иконка диалога
-		        adb.setIcon(android.R.drawable.ic_dialog_info);
-		        adb.setPositiveButton(R.string.yes, null);
-		        // Создаем диалог
-		        adb.create();
-	    		adb.setMessage("Сейчас эта возможность не работает. Следите за обновлениями программы.");
-		    	adb.show();
-		        break;
-		    // нейтральная кнопка  
-		    case Dialog.BUTTON_NEUTRAL:
-		    	break;
-		    }
-		}
-	};
 	// Конец секции диалога
 
 	private static Game game = null;

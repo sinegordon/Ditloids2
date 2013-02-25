@@ -8,16 +8,16 @@ import java.util.*;
 
 public class Level {
 
-    // РЎРїРёСЃРѕРє РґРёС‚Р»РѕРёРґРѕРІ
+    // Список дитлоидов
     private ArrayList<String> ditloids = null;
 
-    // РЎРїРёСЃРѕРє РїРѕРґСЃРєР°Р·РѕРє
+    // Список подсказок
     private ArrayList<String> hints = null;
     
     private int levelIndex = 0;
 
-    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµСЂСѓС‰РёР№ РёРЅС„РѕСЂРјР°С†РёСЋ РѕР± СѓСЂРѕРІРЅРµ СЃ РЅРѕРјРµСЂРѕРј levelIndex РёР· СЂРµСЃСѓСЂСЃРѕРІ РєРѕРЅС‚РµРєСЃС‚Р° context
-    // Рё РёРЅС„РѕСЂРјР°С†РёРµР№ РїСЂРёР»РѕР¶РµРЅРёСЏ С…СЂР°РЅСЏС‰РµР№СЃСЏ РІ settings
+    // Конструктор берущий информацию об уровне с номером levelIndex из ресурсов контекста context
+    // и информацией приложения хранящейся в settings
     public Level(Context context, int _levelIndex){
         levelIndex = _levelIndex;
         Resources res = context.getResources();
@@ -40,7 +40,7 @@ public class Level {
         }
     }
 
-    // РџСЂРѕРІРµСЂСЏРµРј РѕС‚РІРµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ  probablyAnswer РЅР° РґРёС‚Р»РѕРёРґ СЃ РёРЅРґРµРєСЃРѕРј ditloidIndex
+    // Проверяем ответ пользователя  probablyAnswer на дитлоид с индексом ditloidIndex
     public boolean Verify(int ditloidIndex, String probablyAnswer){
         if(ditloidIndex > ditloids.size() || ditloidIndex < 0 ) return false;
         if(ditloids.get(ditloidIndex).toLowerCase().equals(probablyAnswer.toLowerCase())){
@@ -49,7 +49,7 @@ public class Level {
             return false;
     }
 
-    // РџРѕР»СѓС‡РёС‚СЊ РґРёС‚Р»РѕРёРґ СЃ РёРЅРґРµРєСЃРѕРј ditloidIndex
+    // Получить дитлоид с индексом ditloidIndex
     public String GetDitloid(int ditloidIndex){
         String ditloid = "";
         if(ditloidIndex < ditloids.size() && ditloidIndex > -1){
@@ -65,20 +65,20 @@ public class Level {
             return "";
     }
 
-    // РџРѕР»СѓС‡РёС‚СЊ РѕС‚РІРµС‚ РЅР° РґРёС‚Р»РѕРёРґ СЃ РёРЅРґРµРєСЃРѕРј ditloidIndex, РµСЃР»Рё РѕРЅ СѓР¶Рµ РѕС‚РіР°РґР°РЅ (РёРЅР°С‡Рµ Р±РµР»РёР±РµСЂРґР°)
+    // Получить ответ на дитлоид с индексом ditloidIndex, если он уже отгадан (иначе белиберда)
     public String GetDitloidAnswer(int ditloidIndex){
-        if(ditloidIndex > ditloids.size() || ditloidIndex < 0) return "РџРѕРґСЃРєР°Р·РєР° РїРѕРєР° РЅРµ РѕРїСЂРµРґРµР»РµРЅР°";
+        if(ditloidIndex > ditloids.size() || ditloidIndex < 0) return "Подсказка пока не определена";
         return ditloids.get(ditloidIndex);
     }
 
-    // РџРѕР»СѓС‡РёС‚СЊ РїРѕРґСЃРєР°Р·РєСѓ РЅР° РґРёС‚Р»РѕРёРґ СЃ РёРЅРґРµРєСЃРѕРј ditloidIndex, РµСЃР»Рё РѕРЅ СѓР¶Рµ РѕС‚РіР°РґР°РЅ (РёРЅР°С‡Рµ РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°)
+    // Получить подсказку на дитлоид с индексом ditloidIndex, если он уже отгадан (иначе пустая строка)
     public String GetDitloidHint(int ditloidIndex){
-        if(ditloidIndex > hints.size() || ditloidIndex < 0 || hints == null) return "РџРѕРґСЃРєР°Р·РєР° РіРґРµ-С‚Рѕ СЂСЏРґРѕРј ;)";
+        if(ditloidIndex > hints.size() || ditloidIndex < 0 || hints == null) return "Подсказка где-то рядом ;)";
         return hints.get(ditloidIndex);
     }
 
     
-    // РћР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РґРёС‚Р»РѕРёРґРѕРІ
+    // Общее количество дитлоидов
     public int GetDitloidsCount(){
         return ditloids.size();
     }

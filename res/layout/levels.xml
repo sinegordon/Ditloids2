@@ -36,7 +36,7 @@
     	    android:layout_marginTop="0dp"
     	    style="@style/blue" />   
   	
-   			<TextView		    
+   		<TextView		    
 			android:id="@+id/TextView1"
    			android:gravity="center"
         	android:layout_width="wrap_content"

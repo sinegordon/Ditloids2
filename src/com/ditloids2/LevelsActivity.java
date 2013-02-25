@@ -5,6 +5,7 @@ import java.io.IOException;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.AudioManager;
@@ -29,7 +30,7 @@ import android.widget.TextView;
  * dual-scrolling capabilities when a vertically scrollable element is nested inside the pager.
  */
 public class LevelsActivity extends Activity implements OnClickListener, OnKeyListener {
-    private RadioGroup radioGroup = null;
+	private RadioGroup radioGroup = null;
 	private HorizontalPager pager = null;
 	// Массив текстовых полей уровней
 	private TextView[] countViews = null;
@@ -38,9 +39,56 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	// Индекс текущего уровня на экране
 	private int checkedLevelIndex = -1;
 	private static Game game = null;
-	// Диалог
+	// Диалог на купленные уровни
 	private AlertDialog.Builder adb = null;
 	private static BitmapDrawable bmd = null;
+	
+	// Секция диалога покупки уровней
+	final int DIALOG_EXIT = 1;
+	
+	protected Dialog onCreateDialog(int id) {
+	    if (id == DIALOG_EXIT) {
+	      AlertDialog.Builder adb = new AlertDialog.Builder(this);
+	      // Заголовок
+	      adb.setTitle(R.string.hint_title);
+	      // Сообщение
+	      adb.setMessage(R.string.hint_message);
+	      // Иконка
+	      adb.setIcon(android.R.drawable.ic_dialog_info);
+	      // Кнопка положительного ответа
+	      adb.setPositiveButton(R.string.yes, dialogClickListener);
+	      // Кнопка нейтрального ответа
+	      adb.setNeutralButton(R.string.no, dialogClickListener);
+	      // Создаем диалог
+	      return adb.create();
+	   }
+	   return super.onCreateDialog(id);
+	}
+	
+	android.content.DialogInterface.OnClickListener dialogClickListener = new android.content.DialogInterface.OnClickListener(){
+		public void onClick(DialogInterface dialog, int which){
+			switch (which) {
+		    // положительная кнопка
+		    case Dialog.BUTTON_POSITIVE:
+		    	// Диалог
+		    	AlertDialog.Builder adb = null;		    	
+		        // Построение диалога
+		        adb = new AlertDialog.Builder(LevelsActivity.this);
+		        // Иконка диалога
+		        adb.setIcon(android.R.drawable.ic_dialog_info);
+		        adb.setPositiveButton(R.string.yes, null);
+		        // Создаем диалог
+		        adb.create();
+	    		adb.setMessage("Сейчас эта возможность не работает. Следите за обновлениями программы.");
+		    	adb.show();
+		        break;
+		    // нейтральная кнопка  
+		    case Dialog.BUTTON_NEUTRAL:
+		    	break;
+		    }
+		}
+	};
+	// Конец секции диалога покупки уровней
 	
 	// Обработчик листания экрана
 	private final HorizontalPager.OnScreenSwitchListener onScreenSwitchListener =
@@ -89,7 +137,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         pager.setOnScreenSwitchListener(onScreenSwitchListener);
         // Выставляем шрифт на header
         ((TextView)findViewById(R.id.textView1)).setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf"));
-        // Построение диалога
+        // Построение диалога на купленные уровни
         adb = new AlertDialog.Builder(this);
         // Иконка диалога
         adb.setIcon(android.R.drawable.ic_dialog_info);
@@ -99,10 +147,11 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         adb.create();
         countViews = new TextView[game.GetCountLevels()];
         countButtons = new Button[game.GetCountLevels()];
-        // Заполняем массивы кнопок уровней и надписей на уровнях
+        // Заполняем массивы кнопок уровней и надписей на уровнях и устанавливаем их шрифт
         for(int i = 1; i < game.GetCountLevels() + 1; i++){
         	int id = getResources().getIdentifier("TextView" + Integer.toString(i), "id", getApplicationContext().getPackageName());
         	TextView countView = (TextView)findViewById(id);
+        	countView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Regular.ttf"));
         	int idb = getResources().getIdentifier("level" + Integer.toString(i) + "button", "id", getApplicationContext().getPackageName());
         	Button but = (Button)findViewById(idb);
         	countViews[i-1] = countView;

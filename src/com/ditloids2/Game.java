@@ -13,59 +13,61 @@ import android.content.Intent;
 
 
 public class Game {
+	// Куплены ли коммерческие уровни
+	private boolean sale = false;
 	
-	// РљРѕР»РёС‡РµСЃС‚РІРѕ СѓСЂРѕРІРЅРµР№
+	// Количество уровней
 	private int countLevels = 0;
 	
-	// РњР°СЃСЃРёРІ СѓСЂРѕРІРЅРµР№
+	// Массив уровней
 	private Level[] levels = null;
 	
-    // РўРµРєСѓС‰РёР№ СѓСЂРѕРІРµРЅСЊ
+    // Текущий уровень
     private Level currentLevel = null;
     
-    // Р?РЅРґРµРєСЃ С‚РµРєСѓС‰РµРіРѕ РґРёС‚Р»РѕРёРґР° РЅР° С‚РµРєСѓС‰РµРј СѓСЂРѕРІРЅРµ
+    // Индекс текущего дитлоида на текущем уровне
     private int currentDitloidIndex = -1;
 
-    // РњР°СЃСЃРёРІ С„Р»Р°РіРѕРІ РѕС‚РІРµС‡РµРЅРЅС‹С… РґРёС‚Р»РѕРёРґРѕРІ РЅР° С‚РµРєСѓС‰РёР№ СѓСЂРѕРІРµРЅСЊ
+    // Массив флагов отвеченных дитлоидов на текущий уровень
     private boolean[] answers = null;
     
-    // Р?РјРµСЋС‰РµРµСЃСЏ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕРґСЃРєР°Р·РѕРє
+    // ??меющееся количество подсказок
     private int countHints = 0;
 
-    // РњР°СЃСЃРёРІ С„Р»Р°РіРѕРІ РІР·СЏС‚С‹С… РїРѕРґСЃРєР°Р·РѕРє РЅР° С‚РµРєСѓС‰РёР№ СѓСЂРѕРІРµРЅСЊ
+    // Массив флагов взятых подсказок на текущий уровень
     private boolean[] hints = null;
 
-    // Р—Р° СЃРєРѕР»СЊРєРѕ РѕС‚РІРµС‚РѕРІ РґР°РµС‚СЃСЏ РїРѕРґСЃРєР°Р·РєР°
+    // За сколько ответов дается подсказка
     private int hintsDivisor = 3;
 
-    // Р—Р° СЃРєРѕР»СЊРєРѕ РѕС‚РІРµС‚РѕРІ РґР°РµС‚СЃСЏ СЃР»РµРґСѓСЋС‰РёР№ СѓСЂРѕРІРµРЅСЊ
+    // За сколько ответов дается следующий уровень
     private int levelsDivisor = 15;
 
-    // РћР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂР°РІРёР»СЊРЅРѕ РѕС‚РІРµС‡РµРЅРЅС‹С… РґРёС‚Р»РѕРёРґРѕРІ
+    // Общее количество правильно отвеченных дитлоидов
     private int countRight = 0; 
 
-    // РћР±СЉРµРєС‚ РЅР°СЃС‚СЂРѕРµРє РїСЂРёР»РѕР¶РµРЅРёСЏ
+    // Объект настроек приложения
     private SharedPreferences settings = null;
 
-    // РћР±СЉРµРєС‚ РєРѕРЅС‚РµРєСЃС‚Р° РёРіСЂС‹
+    // Объект контекста игры
     private Context context = null;
     
-    // РџСѓР» Р·РІСѓРєРѕРІ
+    // Пул звуков
     private SoundPool sounds = null;
     
-    // Р§РёСЃР»Рѕ Р·РІСѓРєРѕРІ
+    // Число звуков
     private int countSounds = 2;
     
-    // Р•СЃС‚СЊ Р»Рё Р·РІСѓРє РІ РёРіСЂРµ
+    // Есть ли звук в игре
     private boolean isMuteSound = false;
     
-    // РџСЂРѕРёРіСЂС‹РІР°С‚РµР»СЊ
+    // Проигрыватель
     private MediaPlayer mediaPlayer = null;
     
-    // Р•СЃС‚СЊ Р»Рё РјСѓР·С‹РєР° РІ РёРіСЂРµ
+    // Есть ли музыка в игре
     private boolean isMuteMusic = false;
 
-    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+    // Конструктор
     public Game(Context context, int countLevels) throws IllegalStateException, IOException {
         Resources res = context.getResources();
         this.context = context;
@@ -74,6 +76,7 @@ public class Game {
         settings = context.getSharedPreferences(prefsName, 0);
         countHints = settings.getInt("hints", 0);
         countRight = settings.getInt("right", 0);
+        sale = settings.getBoolean("sale", false);
         isMuteSound = settings.getBoolean("isMuteSound", false);
         isMuteMusic = settings.getBoolean("isMuteMusic", false);
         levels = new Level[countLevels];
@@ -97,12 +100,28 @@ public class Game {
 		});	
     }
     
-    // Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ СѓСЂРѕРІРЅРµР№ РІ РёРіСЂРµ
+    // Возвращает количество уровней в игре
     public int GetCountLevels() {
     	return countLevels;
     }
     
-    // РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂР°РІРёР»СЊРЅС‹С… РѕС‚РІРµС‚РѕРІ РЅР° СѓСЂРѕРІРµРЅСЊ levelIndex СЃРѕС…СЂР°РЅРµРЅРЅС‹С… РІ РЅР°СЃС‚СЂРѕР№РєР°С…
+    // Возвращает куплена ли игра
+    public boolean GetSaleInfo() {
+    	return sale;
+    }
+    
+    // Задает состояние покупки игры
+    public void SetSaleInfo() {
+    	sale = true;
+    	Resources res = context.getResources();
+        String prefsName = res.getString(R.string.prefs_name);
+        settings = context.getSharedPreferences(prefsName, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("sale", sale);
+        editor.commit();
+    }
+    
+    // Количество правильных ответов на уровень levelIndex сохраненных в настройках
     public int AnswersCount(int levelIndex) {
     	if(levelIndex <= countLevels){
     		String ans_str = settings.getString("level" + Integer.toString(levelIndex), "");
@@ -117,7 +136,7 @@ public class Game {
     		return 0;
     }
 
-    // Р’РѕР·РІСЂР°С‰Р°РµРј СѓСЂРѕРІРµРЅСЊ СЃ РёРЅРґРµРєСЃРѕРј levelIndex    
+    // Возвращаем уровень с индексом levelIndex    
     public Level GetLevel(int levelIndex) {
     	if(levelIndex > 0 && levelIndex <= countLevels && !levels.equals(null))
     		return levels[levelIndex-1];
@@ -125,7 +144,7 @@ public class Game {
     		return null;
     }
     
-    // Р—Р°РіСЂСѓР¶Р°РµРј СѓСЂРѕРІРµРЅСЊ СЃ РёРЅРґРµРєСЃРѕРј levelIndex
+    // Загружаем уровень с индексом levelIndex
     public void LoadLevel(int levelIndex) {
         currentLevel = levels[levelIndex-1];
         answers = new boolean[currentLevel.GetDitloidsCount()];
@@ -148,7 +167,7 @@ public class Game {
         };
     }
 
-    // РЎРѕС…СЂР°РЅСЏРµРј С‚РµРєСѓС‰РёР№ СѓСЂРѕРІРµРЅСЊ
+    // Сохраняем текущий уровень
     public void SaveLevel() {
         String ans = "";
         for(int i=0; i < answers.length; i++){
@@ -240,7 +259,7 @@ public class Game {
     	return levelsDivisor;
     }
     
-    // РџСЂРѕРёРіСЂС‹РІР°РµРј Р·РІСѓРє СЃ РёРЅРґРµРєСЃРѕРј id
+    // Проигрываем звук с индексом id
     public void PlaySound(int soundId){
     	if(soundId < 0 || soundId > countSounds || isMuteSound) return;
         AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
@@ -250,20 +269,20 @@ public class Game {
     	sounds.play(soundId, volume, volume, 1, 0, 1.0f);
     }
     
-    // РџРѕР»СѓС‡Р°РµРј РїРѕСЃР»РµРґРЅРёР№ РЅРµРІРµСЂРЅС‹Р№ РѕС‚РІРµС‚ РЅР° РґРёС‚Р»РѕРёРґ ditloidIndex РЅР° СѓСЂРѕРІРЅРµ levelIndex
+    // Получаем последний неверный ответ на дитлоид ditloidIndex на уровне levelIndex
     public String GetLastWrongAnswer(int levelIndex, int ditloidIndex){
         String wrong_ans = settings.getString("wrong_" + Integer.toString(levelIndex) + "_" + Integer.toString(ditloidIndex), "");
         return wrong_ans;
     }
     
-    // Р—Р°РїРёСЃС‹РІР°РµРј РїРѕСЃР»РµРґРЅРёР№ РЅРµРІРµСЂРЅС‹Р№ РѕС‚РІРµС‚ РЅР° РґРёС‚Р»РѕРёРґ ditloidIndex РЅР° СѓСЂРѕРІРЅРµ levelIndex
+    // Записываем последний неверный ответ на дитлоид ditloidIndex на уровне levelIndex
     public void SetLastWrongAnswer(String answer, int levelIndex, int ditloidIndex){
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("wrong_" + Integer.toString(levelIndex) + "_" + Integer.toString(ditloidIndex), answer);
         editor.commit();   	
     }
     
-    // РћС‡РёС‰Р°РµРј РІСЃРµ РЅР°СЃС‚СЂРѕР№РєРё
+    // Очищаем все настройки
     public void ClearProgress(){ 	
     	SharedPreferences.Editor editor = settings.edit();
     	editor.clear();
@@ -310,8 +329,8 @@ public class Game {
         editor.commit();   	   	
     }
     
-    // Р’РѕР·РІСЂР°С‰Р°РµРј РґРѕСЃС‚СѓРїРµРЅ Р»Рё СЃРµР№С‡Р°СЃ СѓСЂРѕРІРµРЅСЊ СЃ РёРЅРґРµРєСЃРѕРј levelIndex 
-    // (РЅР°РїРѕРјРЅРёРј, С‡С‚Рѕ РїСЂРё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РєР»Р°СЃСЃР° СѓСЂРѕРІРЅРё РЅСѓРјРµСЂСѓСЋС‚СЃСЏ СЃ РµРґРёРЅРёС†С‹, Р° РІРЅСѓС‚СЂРё РєР»Р°СЃСЃР° СЃ РЅСѓР»СЏ)
+    // Возвращаем доступен ли сейчас уровень с индексом levelIndex 
+    // (напомним, что при использовании класса уровни нумеруются с единицы, а внутри класса с нуля)
     public boolean GetLevelAccess(int levelIndex){
     	if(levelIndex < 1 || levelIndex > levels.length)
     		return false;
@@ -322,7 +341,7 @@ public class Game {
     		return false;
     }
     
-    // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј Рё СЃРЅРёРјР°РµРј РјСѓР·С‹РєСѓ СЃ РїР°СѓР·С‹
+    // Устанавливаем и снимаем музыку с паузы
     public void SetPauseMusic(boolean isPause){
     	if(isMuteMusic)
     		return;
