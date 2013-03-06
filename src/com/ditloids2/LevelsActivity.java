@@ -2,14 +2,20 @@ package com.ditloids2;
 
 import java.io.IOException;
 
+import com.android.vending.billing.IInAppBillingService;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -43,6 +49,25 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	private AlertDialog.Builder adb = null;
 	private static BitmapDrawable bmd = null;
 	
+	// Секция объявления in-app billing полей и методов
+	IInAppBillingService mService;
+
+	ServiceConnection mServiceConn = new ServiceConnection() {
+
+		@Override
+		public void onServiceConnected(ComponentName name, IBinder service) {
+			mService = IInAppBillingService.Stub.asInterface(service);	
+		}
+
+		@Override
+		public void onServiceDisconnected(ComponentName name) {
+			mService = null;
+		}
+	   
+	};
+	// Конец секции объявления in-app billing полей и методов
+	
+	
 	// Секция диалога покупки уровней
 	final int DIALOG_EXIT = 1;
 	
@@ -70,17 +95,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 			switch (which) {
 		    // положительная кнопка
 		    case Dialog.BUTTON_POSITIVE:
-		    	// Диалог
-		    	AlertDialog.Builder adb = null;		    	
-		        // Построение диалога
-		        adb = new AlertDialog.Builder(LevelsActivity.this);
-		        // Иконка диалога
-		        adb.setIcon(android.R.drawable.ic_dialog_info);
-		        adb.setPositiveButton(R.string.yes, null);
-		        // Создаем диалог
-		        adb.create();
-	    		adb.setMessage("Сейчас эта возможность не работает. Следите за обновлениями программы.");
-		    	adb.show();
+		    	
 		        break;
 		    // нейтральная кнопка  
 		    case Dialog.BUTTON_NEUTRAL:
@@ -164,6 +179,10 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
     	}
         findViewById(R.id.arrowButton).setOnClickListener(this);
         findViewById(R.id.arrowButton).bringToFront();
+        // Подключаемся к in-app billing сервису
+        bindService(new 
+                Intent("com.android.vending.billing.InAppBillingService.BIND"),
+                        mServiceConn, Context.BIND_AUTO_CREATE);
     }
     
     
@@ -180,6 +199,12 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	    		int id = getResources().getIdentifier("level" + Integer.toString(i) +"button", "id", getApplicationContext().getPackageName());
 	    		// Еcли нажата
 	    		if (id == view.getId()){
+	    			// Проверяем куплены ли дополнительные уровни, если это уровень выше второго
+	    			if(!game.GetSaleInfo() && i > 1) {
+	    				Dialog d = onCreateDialog(DIALOG_EXIT);
+	    				d.show();
+	    				break;
+	    			};
 	    			// Проверяем доступность уровня
 	    	    	if(game.GetLevelAccess(i)){
 	    	    		// Если доступен - переходим
@@ -246,4 +271,11 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
     	bmd = _bmd;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mServiceConn != null) {
+            unbindService(mServiceConn);
+        }   
+    }
 }
