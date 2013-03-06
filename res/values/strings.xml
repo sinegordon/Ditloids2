@@ -46,4 +46,6 @@
     <string name="sfx_off">выключить звуки</string>
     <string name="music_on">включить музыку</string>
     <string name="music_off">выключить музыку</string>
+    <string name="inapp_ok">Дополнительные уровни куплены</string>
+    <string name="inap_error">Ошибка покупки</string>
 </resources>

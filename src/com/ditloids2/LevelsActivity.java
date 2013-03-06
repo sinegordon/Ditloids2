@@ -2,20 +2,26 @@ package com.ditloids2;
 
 import java.io.IOException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.android.vending.billing.IInAppBillingService;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender.SendIntentException;
 import android.content.ServiceConnection;
 import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.RemoteException;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -30,6 +36,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A more complex demo including using a RadioGroup as "tabs" for the pager and showing the
@@ -93,9 +100,21 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	android.content.DialogInterface.OnClickListener dialogClickListener = new android.content.DialogInterface.OnClickListener(){
 		public void onClick(DialogInterface dialog, int which){
 			switch (which) {
-		    // положительная кнопка
+		    // положительная кнопка - совершаем покупку (немного плохо, что в потоке активности))
 		    case Dialog.BUTTON_POSITIVE:
-		    	
+		    	try {
+					Bundle buyIntentBundle = mService.getBuyIntent(3, getPackageName(), "AddLevels", "inapp", null);
+					PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
+					startIntentSenderForResult(pendingIntent.getIntentSender(),
+							   1001, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
+							   Integer.valueOf(0));
+				} catch (RemoteException e) {
+					Toast.makeText(null, getResources().getText(R.string.inap_error), Toast.LENGTH_SHORT).show();
+					e.printStackTrace();
+				} catch (SendIntentException e) {
+					Toast.makeText(null, getResources().getText(R.string.inap_error), Toast.LENGTH_SHORT).show();
+					e.printStackTrace();
+				}
 		        break;
 		    // нейтральная кнопка  
 		    case Dialog.BUTTON_NEUTRAL:
@@ -241,6 +260,27 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         	}
         }
     }
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) { 
+	   if (requestCode == 1001) {           
+	      int responseCode = data.getIntExtra("RESPONSE_CODE", 0);
+	      String purchaseData = data.getStringExtra("INAPP_PURCHASE_DATA");
+	      String dataSignature = data.getStringExtra("INAPP_DATA_SIGNATURE");
+	        
+	      if (resultCode == RESULT_OK) {
+	         try {
+	        	 JSONObject jo = new JSONObject(purchaseData);
+	             String sku = jo.getString("productId");
+	             Toast.makeText(this, getResources().getText(R.string.inapp_ok), Toast.LENGTH_SHORT).show();
+	          }
+	          catch (JSONException e) {
+	        	 Toast.makeText(this, getResources().getText(R.string.inap_error), Toast.LENGTH_SHORT).show();
+	             e.printStackTrace();
+	          }
+	      }
+	   }
+	}
 	
     // Сворачивание приложения
     @Override
