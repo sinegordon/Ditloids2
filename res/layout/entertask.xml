@@ -43,16 +43,16 @@
 	<TextView
 	    android:id="@+id/textView3"
 	    android:layout_width="300dp"
-	    android:layout_height="120dp"
+	    android:layout_height="110dp"
 	    android:layout_below="@+id/textView1"
 	    android:layout_centerHorizontal="true"
 	    android:gravity="center_horizontal"
 	    android:paddingTop="0dp"
 	    android:layout_marginTop="15dp"
 	    android:textSize="35sp"
-	    android:textColor="#254566"    
+	    android:textColor="#fff"    
 	    android:text="@string/task_item"
-	    android:background="@drawable/bg_task_with_hint"/>
+	    android:background="#50c0e9"/>
 	
 	<TextView
 	    android:id="@+id/textHint"
@@ -77,33 +77,32 @@
 	    android:textColor="#60778c"
 	    android:background="@drawable/hint" />
 	
-	<Button
-	    android:id="@+id/buttonCheck"
-	    android:layout_width="265dp"
-	    android:layout_height="43dp"
-	    android:layout_alignLeft="@+id/editText1"
-	    android:layout_below="@+id/editText1"
-	    android:layout_marginTop="-10dp"
-	    android:background="@drawable/check"
-	    android:gravity="center"
-	    android:textColor="#60778c" />
-	
 	<EditText
 	    android:id="@+id/editText1"
 	    android:layout_width="265dp"
 	    android:layout_height="40dp"
 	    android:layout_below="@+id/textView3"
-	    android:layout_centerHorizontal="true"
-	    android:gravity="left"
+	    android:layout_alignParentLeft="true"
 	    android:padding="9dp"
-	    android:layout_marginTop="0dp"
+	    android:layout_marginTop="20dp"
+	    android:layout_marginLeft="10dp"
 	    android:textSize="13sp"
 	    android:textColor="#212a33"    
 	    android:ems="10"
 	    android:background="@drawable/bg_input" 
 	    android:hint="@string/enter_answer">
 	
-	    <requestFocus />
+	    <requestFocus />	   	    
 	</EditText>
+	
+	<Button
+	    android:id="@+id/buttonCheck"
+	    android:layout_width="40dp"
+	    android:layout_height="40dp"
+	    android:layout_alignParentRight="true"
+	    android:layout_marginTop="20dp"
+	    android:layout_marginRight="10dp"
+	    android:layout_below="@+id/textView3"
+	    android:background="@drawable/check" />	
 
 </RelativeLayout>
