@@ -123,7 +123,7 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	    		//sfxButton.setBackgroundResource(R.drawable.sfx_off);
 	    	}else{
 	    		game.SetMuteSound(true);
-	    		game.SaveMuteMusic();
+	    		game.SaveMuteSound();
 	    		sfxButton.setText(R.string.sfx_on);
 	    		//sfxButton.setBackgroundResource(R.drawable.sfx_on);	    		
 	    	}
@@ -133,10 +133,12 @@ public class OptionsActivity extends Activity implements OnClickListener, OnKeyL
 	    	if(game.GetMuteMusic()){
 	    		musicButton.setText(R.string.music_off);
 	    		game.SetMuteMusic(false);
+	    		game.SaveMuteMusic();
 	    		//musicButton.setBackgroundResource(R.drawable.music_off);
 	    	}else{
 	    		musicButton.setText(R.string.music_on);
 	    		game.SetMuteMusic(true);
+	    		game.SaveMuteMusic();
 	    		//musicButton.setBackgroundResource(R.drawable.music_on);	    		
 	    	}
 	    	break;
