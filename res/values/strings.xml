@@ -7,7 +7,7 @@
     <string name="start">играть</string>
     <string name="settings">настройки</string>
     <string name="rules">как играть?</string> 
-    <string name="level">Уровень 1</string>
+    <string name="level">уровень 1</string>
     <string name="levels">выбор уровня</string>
     <string name="hints">подсказки:</string>
     <string name="hints_count">12</string>
@@ -48,4 +48,41 @@
     <string name="music_off">выключить музыку</string>
     <string name="inapp_ok">Дополнительные уровни куплены</string>
     <string name="inap_error">Ошибка покупки</string>
+    
+    <string name="level1">
+        Уровень 1\n
+        \n
+        «Классический»
+    </string>
+    <string name="level2">
+        Уровень 2\n
+        \n
+        «Классический II»
+    </string>
+    <string name="level3">
+        Уровень 3\n
+        \n
+        «Классический III»
+    </string>
+    <string name="level4">
+        Уровень 4\n
+        \n
+        «Классический IV»
+    </string>
+    <string name="level5">
+        Уровень 5\n
+        \n
+        «Художественный»
+    </string>
+    <string name="level6">
+        Уровень 6\n
+        \n
+        «Пословицы и\n
+        поговорки»
+    </string>
+    <string name="level7">
+        Уровень 7\n
+        \n
+        «Календарный»
+    </string>                            
 </resources>

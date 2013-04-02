@@ -21,24 +21,13 @@
 	    android:text="@string/level" /> 
 	    
 	<TextView
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-		android:layout_alignParentRight="true"   
-	    android:gravity="center"
-	    android:textSize="10sp"    	 
-	    android:layout_marginTop="12dp"
-	    android:layout_marginRight="25dp"        
-	    android:text="@string/hints" /> 
+	    style="@style/hints"       
+	    android:text="@string/hints" />
 	    
 	<TextView
 	    android:id="@+id/textView2"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-		android:layout_alignParentRight="true" 
-	    android:layout_marginTop="9dp"
-	    android:layout_marginRight="15dp"         
-	    android:text="@string/hints_count"
-	    android:textSize="14sp" />    
+	    style="@style/hints_count"        
+	    android:text="@string/hints_count"/>     
 	
 	<TextView
 	    android:id="@+id/textView3"

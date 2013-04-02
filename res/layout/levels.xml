@@ -30,20 +30,17 @@
    			android:gravity="center">
    		<Button   		     		    
      	  	android:id="@+id/level1button"			
-            android:layout_width="230dp"
-            android:layout_height="230dp"
-    	    android:layout_marginTop="0dp"
-    	    style="@style/blue" />   
+    	    style="@style/levelBlock"
+    	    android:background="#50c0e9" />
+
+   		<TextView		    
+			android:id="@+id/TextViewName1"
+			style="@style/levelName"
+			android:text="@string/level1"/>   				   
   	
    		<TextView		    
 			android:id="@+id/TextView1"
-   			android:gravity="center"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:textSize="22sp"
-			android:textColor="#d3dae0"
-    	    android:layout_marginTop="165dp"
-    	    android:layout_marginLeft="75dp"/>
+			style="@style/levelCountText"/>
         </RelativeLayout>
         
         <RelativeLayout
@@ -52,19 +49,12 @@
    			android:gravity="center">     
    		<Button     		    
      	  	android:id="@+id/level2button"			
-            android:layout_width="230dp"
-            android:layout_height="230dp"
-    	    android:layout_marginTop="0dp"/> 	
+    	    style="@style/levelBlock"
+    	    android:background="#50c0e9"/> 	
+    	    
    			<TextView		    
 			android:id="@+id/TextView2"
-   			android:gravity="center"
-			android:text="@string/countlv2"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:textSize="22sp"
-			android:textColor="#d3dae0"
-    	    android:layout_marginTop="165dp"
-    	    android:layout_marginLeft="75dp"/>  		
+   			style="@style/levelCountText"/>  		
         </RelativeLayout>
         
         <RelativeLayout
@@ -73,19 +63,12 @@
    			android:gravity="center">
    		<Button    		    
      	  	android:id="@+id/level3button"			
-            android:layout_width="230dp"
-            android:layout_height="230dp"
-    	    android:layout_marginTop="0dp"/>
+    	    style="@style/levelBlock"
+    	    android:background="#50c0e9"/>
+   		
    	    <TextView		    
 			android:id="@+id/TextView3"
-   			android:gravity="center"
-			android:text="@string/countlv3"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:textSize="22sp"
-			android:textColor="#d3dae0"
-    	    android:layout_marginTop="165dp"
-    	    android:layout_marginLeft="75dp"/>   		
+   			style="@style/levelCountText"/>   		
         </RelativeLayout>
         
         <RelativeLayout
@@ -94,19 +77,12 @@
    			android:gravity="center">
    		<Button     		    
      	  	android:id="@+id/level4button"			
-            android:layout_width="230dp"
-            android:layout_height="230dp"
-    	    android:layout_marginTop="0dp"/>
+    	    style="@style/levelBlock"
+    	    android:background="#50c0e9"/>
+   		
    			<TextView		    
 			android:id="@+id/TextView4"
-   			android:gravity="center"
-			android:text="@string/countlv4"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:textSize="22sp"
-			android:textColor="#d3dae0"
-    	    android:layout_marginTop="165dp"
-    	    android:layout_marginLeft="75dp"/>   		
+   			style="@style/levelCountText"/>   		
         </RelativeLayout>     
         
         <RelativeLayout
@@ -115,19 +91,12 @@
    			android:gravity="center">
    		<Button     		    
      	  	android:id="@+id/level5button"			
-            android:layout_width="230dp"
-            android:layout_height="230dp"
-    	    android:layout_marginTop="0dp"/>
+    	    style="@style/levelBlock"
+    	    android:background="#50c0e9"/>
+   		
    			<TextView		    
 			android:id="@+id/TextView5"
-   			android:gravity="center"
-			android:text="@string/countlv4"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:textSize="22sp"
-			android:textColor="#d3dae0"
-    	    android:layout_marginTop="165dp"
-    	    android:layout_marginLeft="75dp"/>   		
+   			style="@style/levelCountText"/>   		
         </RelativeLayout> 
         
         <RelativeLayout
@@ -136,19 +105,12 @@
    			android:gravity="center">
    		<Button     		    
      	  	android:id="@+id/level6button"			
-            android:layout_width="230dp"
-            android:layout_height="230dp"
-    	    android:layout_marginTop="0dp"/>
+    	    style="@style/levelBlock"
+    	    android:background="#50c0e9"/>
+   		
    			<TextView		    
 			android:id="@+id/TextView6"
-   			android:gravity="center"
-			android:text="@string/countlv4"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:textSize="22sp"
-			android:textColor="#d3dae0"
-    	    android:layout_marginTop="165dp"
-    	    android:layout_marginLeft="75dp"/>   		
+   			style="@style/levelCountText"/>   		
         </RelativeLayout> 
         
         <RelativeLayout
@@ -157,19 +119,12 @@
    			android:gravity="center">
    		<Button     		    
      	  	android:id="@+id/level7button"			
-            android:layout_width="230dp"
-            android:layout_height="230dp"
-    	    android:layout_marginTop="0dp"/>
+    	    style="@style/levelBlock"
+    	    android:background="#50c0e9"/>
+   		
    			<TextView		    
 			android:id="@+id/TextView7"
-   			android:gravity="center"
-			android:text="@string/countlv4"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:textSize="22sp"
-			android:textColor="#d3dae0"
-    	    android:layout_marginTop="165dp"
-    	    android:layout_marginLeft="75dp"/>   		
+   			style="@style/levelCountText"/>   		
         </RelativeLayout>         
         
     </com.ditloids2.HorizontalPager>

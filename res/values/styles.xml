@@ -43,9 +43,9 @@
        <item name="android:layout_height" >wrap_content</item> 
        <item name="android:layout_centerHorizontal" >true</item>
        <item name="android:gravity" >center</item> 
-       <item name="android:layout_marginTop" >8dp</item> 
+       <item name="android:layout_marginTop" >5dp</item> 
        <item name="android:textColor" >#fff</item>
-       <item name="android:textSize" >20sp</item>                                             
+       <item name="android:textSize" >24sp</item>                                             
     </style>
     <style name="paragraph">
        <item name="android:layout_width" >fill_parent</item>
@@ -62,4 +62,51 @@
        <item name="android:layout_marginLeft" >15dp</item>                                                           
     </style> 
     
+    <style name="levelBlock">
+       <item name="android:layout_width" >230dp</item>
+       <item name="android:layout_height" >230dp</item>
+       <item name="android:layout_marginTop" >0dp</item>                                                                                  
+    </style> 
+    
+    <style name="levelName">
+       <item name="android:gravity" >center</item>
+       <item name="android:layout_height" >wrap_content</item>
+       <item name="android:layout_width" >wrap_content</item>                  
+       <item name="android:textColor" >#fff</item>
+       <item name="android:textSize" >22sp</item>
+       <item name="android:layout_marginTop" >20dp</item>  
+       <item name="android:layout_marginLeft" >15dp</item>                                                                 
+    </style>     
+    
+    <style name="levelCountText">
+       <item name="android:gravity" >center</item>
+       <item name="android:layout_height" >wrap_content</item>
+       <item name="android:layout_width" >wrap_content</item>                  
+       <item name="android:textColor" >#fff</item>
+       <item name="android:textSize" >22sp</item>
+       <item name="android:layout_marginTop" >175dp</item>  
+       <item name="android:layout_marginLeft" >75dp</item>                                                                 
+    </style> 
+    
+    <style name="hints">
+       <item name="android:gravity" >center</item>
+       <item name="android:layout_height" >wrap_content</item>
+       <item name="android:layout_width" >wrap_content</item>                  
+       <item name="android:layout_alignParentRight" >true</item>
+       <item name="android:textSize" >11sp</item>
+       <item name="android:textColor" >#fff</item>       
+       <item name="android:layout_marginTop" >14dp</item>  
+       <item name="android:layout_marginRight" >25dp</item>                                                                 
+    </style>
+    
+    <style name="hints_count">
+       <item name="android:layout_height" >wrap_content</item>
+       <item name="android:layout_width" >wrap_content</item>                  
+       <item name="android:layout_alignParentRight" >true</item>
+       <item name="android:textSize" >14sp</item>
+       <item name="android:textColor" >#fff</item>       
+       <item name="android:layout_marginTop" >11dp</item>  
+       <item name="android:layout_marginRight" >13dp</item>                                                                 
+    </style>             
+     
 </resources>
