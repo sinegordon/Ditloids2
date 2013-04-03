@@ -114,7 +114,7 @@ public class TasksActivity extends Activity implements OnClickListener, OnItemCl
     @Override
     protected void onResume() {
         super.onResume();
-        game.SetPauseMusic(false);
+        game.SetPauseMusic(true);
     }
 
 	@Override

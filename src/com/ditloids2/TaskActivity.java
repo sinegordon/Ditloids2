@@ -68,6 +68,10 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 		((TextView)findViewById(R.id.textView2)).setText(Integer.toString(game.GetCountHints()));
         // Выставляем шрифт на header
         ((TextView)findViewById(R.id.textView1)).setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf"));
+        // Выставляем шрифт на задание
+        ((TextView)findViewById(R.id.textView3)).setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Regular.ttf"));
+        // Выставляем шрифт на поле ввода ответа
+        ((EditText)findViewById(R.id.editText1)).setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Medium.ttf"));
 		// Если дитлоид не отгадан
 		if(!game.GetAnswer(game.GetCurrentDitloidIndex())){
 			// Заполняем поле дитлоида
@@ -254,7 +258,7 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
     @Override
     protected void onResume() {
         super.onResume();
-        game.SetPauseMusic(false);
+        game.SetPauseMusic(true);
     }
     
     public static void SetDrawable(BitmapDrawable _bmd){
