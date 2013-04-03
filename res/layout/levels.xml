@@ -132,7 +132,7 @@
     <RadioGroup
         android:id="@+id/tabs"
         android:layout_height="wrap_content"
-        android:layout_width="220dp"       
+        android:layout_width="230dp"       
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"          
@@ -140,32 +140,32 @@
         <RadioButton           
             android:id="@+id/radio_btn_0"
             android:checked="true"
-			android:width="1dp"
-			android:height="1dp"  />
+			android:width="10dp"
+			android:height="10dp"  />
         <RadioButton              
             android:id="@+id/radio_btn_1"
-			android:width="1dp"
-			android:height="1dp" />
+			android:width="10dp"
+			android:height="10dp" />
         <RadioButton              
             android:id="@+id/radio_btn_2"
-			android:width="1dp"
-			android:height="1dp" />
+			android:width="10dp"
+			android:height="10dp" />
         <RadioButton           
             android:id="@+id/radio_btn_3"
-			android:width="1dp"
-			android:height="1dp" />
+			android:width="10dp"
+			android:height="10dp" />
         <RadioButton           
             android:id="@+id/radio_btn_4"
-			android:width="1dp"
-			android:height="1dp" />  
+			android:width="10dp"
+			android:height="10dp" />  
         <RadioButton           
             android:id="@+id/radio_btn_5"
-			android:width="1dp"
-			android:height="1dp" />  
+			android:width="10dp"
+			android:height="10dp" />  
         <RadioButton           
             android:id="@+id/radio_btn_6"
-			android:width="1dp"
-			android:height="1dp" />   
+			android:width="10dp"
+			android:height="10dp" />   
     </RadioGroup>      
     
 </RelativeLayout>
