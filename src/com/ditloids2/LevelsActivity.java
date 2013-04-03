@@ -248,9 +248,9 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	public void DrawLevelInfo() {
         // ¬ыставл€ем правильные текст и картинки
         for(int i = 1; i < game.GetCountLevels() + 1; i++) {
-        	countViews[i-1].setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Ukrainian-Play.ttf"));
+        	countViews[i-1].setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Regular.ttf"));
         	if(!game.GetLevelAccess(i)) {
-        		//countButtons[i-1].setBackgroundResource(R.drawable.level_lock);
+        		countButtons[i-1].setBackgroundResource(R.drawable.level_lock);
             	countViews[i-1].setText("”ровень " + Integer.toString(i));
         	}
         	else {
@@ -289,12 +289,12 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         game.SetPauseMusic(true);       
     }
     
-    // —н€ть паузу медиа-плеера при возврате на активность  
+    // ѕоставить паузу медиа-плеера при возврате на активность  
     // ќбновить отображение информации об уровн€х при возврате на активность 
     @Override
     protected void onResume() {
     	super.onResume();
-    	game.SetPauseMusic(false);
+    	game.SetPauseMusic(true);
     	DrawLevelInfo();
     }
 	

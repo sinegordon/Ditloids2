@@ -2,6 +2,7 @@ package com.ditloids2;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,14 +35,15 @@ public class TaskArrayAdapter extends ArrayAdapter<String> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.task_item, parent, false);
         TextView textView = (TextView) rowView.findViewById(R.id.label);
+        textView.setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/Roboto-Regular.ttf"));
         // ≈сли отвеченный, ставим другой фон
         if(position >= notanscount)
-        	textView.setBackgroundResource(R.drawable.bg_task_check);
+        	textView.setBackgroundResource(R.color.bg_task_check);
         else{
         	// ≈сли была неверна€ попытка ответа ставим другой фон 
         	String str = game.GetLastWrongAnswer(game.GetCurrentLevel().GetLevelIndex(), ditloidIndexes[position].intValue());
         	if(!str.equals(""))
-        		textView.setBackgroundResource(R.drawable.bg_task_wrong);
+        		textView.setBackgroundResource(R.color.bg_task_wrong);
         }
         textView.setText(values[position]);
         return rowView;
