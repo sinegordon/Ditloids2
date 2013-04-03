@@ -31,7 +31,7 @@ public class Game {
     // Массив флагов отвеченных дитлоидов на текущий уровень
     private boolean[] answers = null;
     
-    // ??меющееся количество подсказок
+    // Имеющееся количество подсказок
     private int countHints = 0;
 
     // Массив флагов взятых подсказок на текущий уровень
@@ -334,8 +334,10 @@ public class Game {
     public boolean GetLevelAccess(int levelIndex){
     	if(levelIndex < 1 || levelIndex > levels.length)
     		return false;
+    	if(levelIndex == 1)
+    		return true;
     	int i = countRight / levelsDivisor;
-    	if(i >= (levelIndex - 1))
+    	if(i >= (levelIndex - 1) && GetSaleInfo() == true)
     		return true;
     	else
     		return false;
