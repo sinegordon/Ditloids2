@@ -51,7 +51,11 @@
      	  	android:id="@+id/level2button"			
     	    style="@style/levelBlock"
     	    android:background="#50c0e9"/> 	
-    	    
+    	<TextView		    
+			android:id="@+id/TextViewName2"
+			style="@style/levelName"
+			android:text="@string/level2"/> 
+			
    			<TextView		    
 			android:id="@+id/TextView2"
    			style="@style/levelCountText"/>  		
@@ -66,6 +70,11 @@
     	    style="@style/levelBlock"
     	    android:background="#50c0e9"/>
    		
+   		<TextView		    
+			android:id="@+id/TextViewName3"
+			style="@style/levelName"
+			android:text="@string/level3"/> 
+			
    	    <TextView		    
 			android:id="@+id/TextView3"
    			style="@style/levelCountText"/>   		
@@ -80,6 +89,11 @@
     	    style="@style/levelBlock"
     	    android:background="#50c0e9"/>
    		
+   		<TextView		    
+			android:id="@+id/TextViewName4"
+			style="@style/levelName"
+			android:text="@string/level4"/> 
+			
    			<TextView		    
 			android:id="@+id/TextView4"
    			style="@style/levelCountText"/>   		
@@ -94,7 +108,12 @@
     	    style="@style/levelBlock"
     	    android:background="#50c0e9"/>
    		
-   			<TextView		    
+   		<TextView		    
+			android:id="@+id/TextViewName5"
+			style="@style/levelName"
+			android:text="@string/level5"/> 
+			
+   		<TextView		    
 			android:id="@+id/TextView5"
    			style="@style/levelCountText"/>   		
         </RelativeLayout> 
@@ -108,7 +127,12 @@
     	    style="@style/levelBlock"
     	    android:background="#50c0e9"/>
    		
-   			<TextView		    
+   		<TextView		    
+			android:id="@+id/TextViewName6"
+			style="@style/levelName"
+			android:text="@string/level6"/> 
+   		
+   		<TextView		    
 			android:id="@+id/TextView6"
    			style="@style/levelCountText"/>   		
         </RelativeLayout> 
@@ -122,7 +146,12 @@
     	    style="@style/levelBlock"
     	    android:background="#50c0e9"/>
    		
-   			<TextView		    
+   		<TextView		    
+			android:id="@+id/TextViewName7"
+			style="@style/levelName"
+			android:text="@string/level7"/> 
+   		
+   		<TextView		    
 			android:id="@+id/TextView7"
    			style="@style/levelCountText"/>   		
         </RelativeLayout>         

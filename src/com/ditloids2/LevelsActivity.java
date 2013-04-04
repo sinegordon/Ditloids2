@@ -45,8 +45,10 @@ import android.widget.Toast;
 public class LevelsActivity extends Activity implements OnClickListener, OnKeyListener {
 	private RadioGroup radioGroup = null;
 	private HorizontalPager pager = null;
-	// Массив текстовых полей уровней
+	// Массив текстовых полей уровней с количеством решенных заданий
 	private TextView[] countViews = null;
+	// Массив текстовых полей уровней с именами уровней
+	private TextView[] nameViews = null;
 	// Массив кнопок перехода на уровни
 	private Button[] countButtons = null;
 	// Индекс текущего уровня на экране
@@ -103,7 +105,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 		    // положительная кнопка - совершаем покупку (немного плохо, что в потоке активности))
 		    case Dialog.BUTTON_POSITIVE:
 		    	try {
-					Bundle buyIntentBundle = mService.getBuyIntent(3, getPackageName(), "AddLevels", "inapp", null);
+					Bundle buyIntentBundle = mService.getBuyIntent(3, getPackageName(), "unlock_levels", "inapp", null);
 					PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
 					startIntentSenderForResult(pendingIntent.getIntentSender(),
 							   1001, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
@@ -180,15 +182,20 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         // Создаем диалог
         adb.create();
         countViews = new TextView[game.GetCountLevels()];
+        nameViews = new TextView[game.GetCountLevels()];
         countButtons = new Button[game.GetCountLevels()];
         // Заполняем массивы кнопок уровней и надписей на уровнях и устанавливаем их шрифт
         for(int i = 1; i < game.GetCountLevels() + 1; i++){
         	int id = getResources().getIdentifier("TextView" + Integer.toString(i), "id", getApplicationContext().getPackageName());
         	TextView countView = (TextView)findViewById(id);
         	countView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Regular.ttf"));
+        	int idn = getResources().getIdentifier("TextViewName" + Integer.toString(i), "id", getApplicationContext().getPackageName());
+        	TextView nameView = (TextView)findViewById(idn);
+        	nameView.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Regular.ttf"));
         	int idb = getResources().getIdentifier("level" + Integer.toString(i) + "button", "id", getApplicationContext().getPackageName());
         	Button but = (Button)findViewById(idb);
         	countViews[i-1] = countView;
+        	nameViews[i-1] = nameView;
         	countButtons[i-1] = but;
         };
         // Выставляем обработчики событий
@@ -251,11 +258,13 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
         	countViews[i-1].setTypeface(Typeface.createFromAsset(getAssets(), "fonts/Roboto-Regular.ttf"));
         	if(!game.GetLevelAccess(i)) {
         		countButtons[i-1].setBackgroundResource(R.drawable.level_lock);
+        		nameViews[i-1].setVisibility(View.INVISIBLE);
             	countViews[i-1].setText("Уровень " + Integer.toString(i));
         	}
         	else {
-        		int drawableId = getResources().getIdentifier("level" + Integer.toString(i), "drawable", getApplicationContext().getPackageName());
-        		//countButtons[i-1].setBackgroundResource(drawableId);
+        		//int drawableId = getResources().getIdentifier("level" + Integer.toString(i), "drawable", getApplicationContext().getPackageName());
+        		countButtons[i-1].setBackgroundColor(getResources().getColor(R.color.bg_open_level));
+        		nameViews[i-1].setVisibility(View.VISIBLE);
             	countViews[i-1].setText(Integer.toString(game.AnswersCount(i)) + " из " + Integer.toString(game.GetLevel(i).GetDitloidsCount()));
         	}
         }
@@ -272,6 +281,7 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	         try {
 	        	 JSONObject jo = new JSONObject(purchaseData);
 	             String sku = jo.getString("productId");
+	             game.SetSaleInfo();
 	             Toast.makeText(this, getResources().getText(R.string.inapp_ok), Toast.LENGTH_SHORT).show();
 	          }
 	          catch (JSONException e) {

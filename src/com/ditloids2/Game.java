@@ -13,6 +13,9 @@ import android.content.Intent;
 
 
 public class Game {
+	// Публичный ключ приложения
+	private String publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtY1vuBuAf8U/gPfApXDW0ReSfzzhjX5zCR4G/E7VY82ycT2DH+VK3oE4GtPB9dSwapMjSSgmvNdKfb/QdJ4FQ3TmkM7YuQVhLrIDNGH0IJDUg/QbVTbJ3BqPYzf6AB+Alrra0vBIa7+yc/66fEEZYA4viSBjVRYxp66FSxX2SEvj7Up0QC8PlrGvQ29SsqGCBitGAzzTqKou1i5aEw0ii9QBQMAShaxfgbNLIxgDA625Ssum3lt3cbWmWkzFGzRxPIcNMaBWjlOvuOMSw7A7ux84OCf9bD9C0nkblym8tfbavty3zjeBA28EyrqGUfuuRNGEC82aktEZR9E/XU4lSwIDAQAB"; 
+	
 	// Куплены ли коммерческие уровни
 	private boolean sale = false;
 	
@@ -351,6 +354,12 @@ public class Game {
     		mediaPlayer.pause();
     	if(!isPause)
     		mediaPlayer.start();
+    }
+    
+    // Возвращаем публичный код
+    public String GetPublicKey()
+    {
+    	return publicKey;
     }
     
 }

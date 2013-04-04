@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<color name="bg_task_wrong">#f83a3a</color>
-    <color name="bg_task_check">#92c500</color>    
+    <color name="bg_task_check">#92c500</color>
+    <color name="bg_open_level">#50c0e9</color>    
 </resources>
