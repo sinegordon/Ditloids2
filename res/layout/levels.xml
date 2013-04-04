@@ -132,7 +132,7 @@
     <RadioGroup
         android:id="@+id/tabs"
         android:layout_height="wrap_content"
-        android:layout_width="230dp"       
+        android:layout_width="wrap_content"       
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"          
