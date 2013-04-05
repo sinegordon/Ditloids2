@@ -125,13 +125,21 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 		    			if (response == 0) {
 		    				// Берем список покупок
 		    		        ArrayList<String> purchaseDataList = ownedItems.getStringArrayList("INAPP_PURCHASE_DATA_LIST");
+		    		        // Если список покупок пуст - совершаем покупку
+		    		        if(purchaseDataList.isEmpty()){
+								Bundle buyIntentBundle = mService.getBuyIntent(3, getPackageName(), "unlock_levels", "inapp", null);
+								PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
+								startIntentSenderForResult(pendingIntent.getIntentSender(),
+										   1001, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
+										   Integer.valueOf(0));
+		    		        }
 		    		        // Проходим по покупкам
 		    		        for (int i = 0; i < purchaseDataList.size(); ++i) {
 		    		        	// Берем информацию о покупке
 		    		            String purchaseData = purchaseDataList.get(i);
 		    		            JSONObject jo;
 								try {
-									// Разбираем информацию
+									// Разбираем информацию о покупке
 									jo = new JSONObject(purchaseData);
 									// Узнаем ID покупки
 									String sku = jo.getString("productId");
