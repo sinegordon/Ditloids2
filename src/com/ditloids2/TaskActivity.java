@@ -37,6 +37,8 @@ public class TaskActivity extends Activity implements OnClickListener, OnKeyList
 	      adb.setMessage(R.string.hint_message);
 	      // »конка
 	      adb.setIcon(android.R.drawable.ic_dialog_info);
+	   //  нопка положительного ответа
+	      adb.setPositiveButton(R.string.ok, null);
 	      // —оздаем диалог
 	      return adb.create();
 	   }

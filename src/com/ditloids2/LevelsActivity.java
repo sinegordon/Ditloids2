@@ -1,6 +1,7 @@
 package com.ditloids2;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,6 +33,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -84,9 +86,9 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 	    if (id == DIALOG_EXIT) {
 	      AlertDialog.Builder adb = new AlertDialog.Builder(this);
 	      // Заголовок
-	      adb.setTitle(R.string.hint_title);
+	      adb.setTitle(R.string.unlock_levels_title);
 	      // Сообщение
-	      adb.setMessage(R.string.hint_message);
+	      adb.setMessage(R.string.unlock_levels_message);
 	      // Иконка
 	      adb.setIcon(android.R.drawable.ic_dialog_info);
 	      // Кнопка положительного ответа
@@ -105,11 +107,45 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
 		    // положительная кнопка - совершаем покупку (немного плохо, что в потоке активности))
 		    case Dialog.BUTTON_POSITIVE:
 		    	try {
-					Bundle buyIntentBundle = mService.getBuyIntent(3, getPackageName(), "unlock_levels", "inapp", null);
-					PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
-					startIntentSenderForResult(pendingIntent.getIntentSender(),
-							   1001, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
-							   Integer.valueOf(0));
+		    		Bundle ownedItems = null;
+		    		// Выясняем есть ли уже покупки
+		    		ownedItems = mService.getPurchases(3, getPackageName(), "inapp", null);
+		    		// Если нет - совершаем покупку
+		    		if(ownedItems == null){
+						Bundle buyIntentBundle = mService.getBuyIntent(3, getPackageName(), "unlock_levels", "inapp", null);
+						PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
+						startIntentSenderForResult(pendingIntent.getIntentSender(),
+								   1001, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
+								   Integer.valueOf(0));
+		    		}
+		    		// Иначе - процедура восстановления
+		    		else {
+		    			// Если было все нормально
+		    			int response = ownedItems.getInt("RESPONSE_CODE");
+		    			if (response == 0) {
+		    				// Берем список покупок
+		    		        ArrayList<String> purchaseDataList = ownedItems.getStringArrayList("INAPP_PURCHASE_DATA_LIST");
+		    		        // Проходим по покупкам
+		    		        for (int i = 0; i < purchaseDataList.size(); ++i) {
+		    		        	// Берем информацию о покупке
+		    		            String purchaseData = purchaseDataList.get(i);
+		    		            JSONObject jo;
+								try {
+									// Разбираем информацию
+									jo = new JSONObject(purchaseData);
+									// Узнаем ID покупки
+									String sku = jo.getString("productId");
+									// Если покупка уровней была - восстанавливаем информацию о ней
+									if(sku.equals("unlock_levels")){
+					    		        game.SetSaleInfo();
+						    			DrawLevelInfo();
+									}
+								} catch (JSONException e) {
+									e.printStackTrace();
+								}
+		    		        }
+		    			}
+		    		}
 				} catch (RemoteException e) {
 					Toast.makeText(null, getResources().getText(R.string.inap_error), Toast.LENGTH_SHORT).show();
 					e.printStackTrace();
@@ -262,9 +298,10 @@ public class LevelsActivity extends Activity implements OnClickListener, OnKeyLi
             	countViews[i-1].setText("Уровень " + Integer.toString(i));
         	}
         	else {
-        		//int drawableId = getResources().getIdentifier("level" + Integer.toString(i), "drawable", getApplicationContext().getPackageName());
+        		int nameId = getResources().getIdentifier("level" + Integer.toString(i), "string", getApplicationContext().getPackageName());
         		countButtons[i-1].setBackgroundColor(getResources().getColor(R.color.bg_open_level));
         		nameViews[i-1].setVisibility(View.VISIBLE);
+        		nameViews[i-1].setText(nameId);
             	countViews[i-1].setText(Integer.toString(game.AnswersCount(i)) + " из " + Integer.toString(game.GetLevel(i).GetDitloidsCount()));
         	}
         }
