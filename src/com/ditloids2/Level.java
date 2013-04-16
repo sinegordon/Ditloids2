@@ -58,7 +58,12 @@ public class Level {
             	if(str[i].trim().substring(0, 1).matches("[0-9]"))
             		ditloid = ditloid + " " + str[i].trim();
             	else
-            		ditloid = ditloid + " " + str[i].trim().substring(0,1);
+            	{
+            		if(Character.isUpperCase(str[i].trim().charAt(0)))
+            			ditloid = ditloid + " " + str[i].trim().substring(0,1);
+            		else
+            			ditloid = ditloid + " " + str[i].trim();
+            	}
             return ditloid.trim();
         }
         else
